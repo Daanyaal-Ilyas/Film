@@ -1,0 +1,15 @@
+D:\Film\Film\obj\Debug\net7.0\Film.csproj.AssemblyReference.cache
+D:\Film\Film\obj\Debug\net7.0\Film.GeneratedMSBuildEditorConfig.editorconfig
+D:\Film\Film\obj\Debug\net7.0\Film.AssemblyInfoInputs.cache
+D:\Film\Film\obj\Debug\net7.0\Film.AssemblyInfo.cs
+D:\Film\Film\obj\Debug\net7.0\Film.csproj.CoreCompileInputs.cache
+D:\Film\Film\bin\Debug\net7.0\Film.exe
+D:\Film\Film\bin\Debug\net7.0\Film.deps.json
+D:\Film\Film\bin\Debug\net7.0\Film.runtimeconfig.json
+D:\Film\Film\bin\Debug\net7.0\Film.dll
+D:\Film\Film\bin\Debug\net7.0\Film.pdb
+D:\Film\Film\obj\Debug\net7.0\Film.dll
+D:\Film\Film\obj\Debug\net7.0\refint\Film.dll
+D:\Film\Film\obj\Debug\net7.0\Film.pdb
+D:\Film\Film\obj\Debug\net7.0\Film.genruntimeconfig.cache
+D:\Film\Film\obj\Debug\net7.0\ref\Film.dll
