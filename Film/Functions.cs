@@ -9,6 +9,7 @@ class Functions
 
     public void FileCheck()
     {
+        // checking if files for actor and film exist 
         if (System.IO.File.Exists(film))
         {
             if (System.IO.File.Exists(actor))
@@ -44,8 +45,10 @@ class Functions
         }
 
     }
+    //Menu
     public  void Menu()
     {
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("/////////////////////////////////////////");
         Console.WriteLine("Welcome to the Films and Actors Search Program");
         Console.WriteLine("1. Search for a film");
@@ -56,16 +59,20 @@ class Functions
         Console.WriteLine("6. View All Actors");
         Console.WriteLine("7. Quit");
         Console.WriteLine("/////////////////////////////////////////");
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("Enter your choice: ");
 
     }
-
+    // Flim info Display
     public  void DisplayFilmInfo()
     {
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("Enter the film title: ");
         string filmtitle = Console.ReadLine().ToUpper();
+        //Checking if the Flims  exists in the list
         if (Films.ContainsKey(filmtitle))
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Film film = Films[filmtitle];
             Console.WriteLine("Title: " + film.Title);
             Console.WriteLine("Director: " + film.Director);
@@ -74,17 +81,21 @@ class Functions
         }
         else
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Film not found!");
         }
     }
+    // Actor info Display
     public void DisplayActorsInfo()
     {
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("Enter the actor's name: ");
         string actorName = Console.ReadLine().ToUpper();
 
-        //Checking if the actor exists in the list
+        //Checking if the actor exists in the dictionary
         if (Actors.Any(a => a.Name == actorName))
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Actor actor = Actors.First(a => a.Name == actorName);
             Console.WriteLine("Name: " + actor.Name);
             Console.WriteLine("Age: " + actor.Age);
@@ -93,26 +104,32 @@ class Functions
         }
         else
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Actor not found!");
         }
     }
+    // Voting for Film 
     public void VoteFilm()
     {
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("Enter the film title: ");
         string filmvote = Console.ReadLine().ToUpper();
         //Checking if the film exists in the dictionary
-        if (Films.Any(f => f.Value.Title == filmvote)) // Compare the string value to the Title property of the Film object
+        if (Films.Any(f => f.Value.Title == filmvote))
         {
-            Film film = Films[filmvote]; // Access the Film object stored in the Films dictionary
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Film film = Films[filmvote]; 
             film.Votes++;
             Save();
             Console.WriteLine("Thank you for your vote");
         }
         else
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Film not found");
         }
     }
+    // Voting for Actor 
     public void VoteActor()
     {
         Console.Write("Enter the Actor Name: ");
@@ -120,6 +137,7 @@ class Functions
         //Checking if the film exists in the dictionary
         if (Actors.Any(a => a.Name == actormvote))
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Actor actor = Actors.First(a => a.Name == actormvote);
             actor.Votes++;
             Save();
@@ -127,9 +145,11 @@ class Functions
         }
         else
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Actor not found");
         }
     }
+    // Save 
     public void Save()
     {
         string savefilm = JsonSerializer.Serialize(Films);
@@ -137,7 +157,7 @@ class Functions
         string saveactors = JsonSerializer.Serialize(Actors);
         File.WriteAllText("actors.txt", saveactors);
     }
-
+    // Loading Actor and Film files
     private void Load()
     {
         string datafilm = File.ReadAllText("films.txt");
@@ -145,24 +165,27 @@ class Functions
         Actors = JsonSerializer.Deserialize<List<Actor>>(dataactor);
         Films = JsonSerializer.Deserialize<Dictionary<string, Film>>(datafilm);
     }
-
+    //Displaying all Films
     public void DisplayFilms()
     {
+        Console.ForegroundColor = ConsoleColor.Cyan;
         Parallel.ForEach(Films, film =>
         {
             // Printing the Film thats in the Dictionary
             Console.WriteLine(film.Value);
         });
     }
-
+    //Displaying all Actors
     public void DisplayActors()
     {
+        Console.ForegroundColor = ConsoleColor.Cyan;
         Parallel.ForEach(Actors, name =>
         {
             // Printing each Actor thats in the List
             Console.WriteLine(name.ToString());
         });
     }
+    // Data for Films called when the files need to be create
     private void FilmData()
     {
         Films.Add("BLACK ADAM", new Film("BLACK ADAM", "JAUME COLLET-SERRA", 2022));
@@ -173,6 +196,7 @@ class Functions
         Films.Add("GREYHOUND", new Film("GREYHOUND", "AARON SCHNEIDER", 2020));
         Films.Add("JAWANI PHIR NAHI ANI 2", new Film("JAWANI PHIR NAHI ANI 2", "NADEEM BAIG", 2018));
     }
+    // Data for Actor called when the files need to be create
     private void ActorData()
     {
         Actors.Add(new Actor("DWAYNE JOHNSON", 50, "UNITED STATES"));
