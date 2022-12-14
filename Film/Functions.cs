@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-
 class Functions
 {
     Dictionary<string, Film> Films = new Dictionary<string, Film>(20);
@@ -43,13 +42,12 @@ class Functions
             Save();
             Load();
         }
-
     }
     //Menu
     public  void Menu()
     {
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("/////////////////////////////////////////");
+        Console.WriteLine("///////////////////////////////////////////////");
         Console.WriteLine("Welcome to the Films and Actors Search Program");
         Console.WriteLine("1. Search for a film");
         Console.WriteLine("2. Search for an actor");
@@ -58,7 +56,7 @@ class Functions
         Console.WriteLine("5. View All Films");
         Console.WriteLine("6. View All Actors");
         Console.WriteLine("7. Quit");
-        Console.WriteLine("/////////////////////////////////////////");
+        Console.WriteLine("////////////////////////////////////////////////");
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("Enter your choice: ");
 
@@ -69,7 +67,7 @@ class Functions
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("Enter the film title: ");
         string filmtitle = Console.ReadLine().ToUpper();
-        //Checking if the Flims  exists in the list
+        //Checking if the Flims  exists in the dictionary
         if (Films.ContainsKey(filmtitle))
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -92,7 +90,7 @@ class Functions
         Console.Write("Enter the actor's name: ");
         string actorName = Console.ReadLine().ToUpper();
 
-        //Checking if the actor exists in the dictionary
+        //Checking if the actor exists in the list
         if (Actors.Any(a => a.Name == actorName))
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -134,7 +132,7 @@ class Functions
     {
         Console.Write("Enter the Actor Name: ");
         string actormvote = Console.ReadLine().ToUpper();
-        //Checking if the film exists in the dictionary
+        //Checking if the actor exists in the list
         if (Actors.Any(a => a.Name == actormvote))
         {
             Console.ForegroundColor = ConsoleColor.Cyan;

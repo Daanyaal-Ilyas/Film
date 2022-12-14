@@ -18,7 +18,7 @@ while (run)
             case 1:
                 functions.DisplayFilmInfo();
                 break;
-            // 2 is for Search for Actora
+            // 2 is for Search for Actors
             case 2:
                 functions.DisplayActorsInfo();
                 break;

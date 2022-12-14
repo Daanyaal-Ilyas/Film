@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-class Film
+﻿class Film
 {
     private string title;
     private string director;
@@ -36,14 +34,12 @@ class Film
         get { return this.director; }
         set { this.director = value; }
     }
-
     //Property for the year of the film
     public int Year
     {
         get { return this.year; }
         set { this.year = value; }
     }
-
     //Property for the votes of the film
     public int Votes
     {
